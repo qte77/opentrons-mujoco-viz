@@ -1,0 +1,34 @@
+# uv build of PhysicalAIBenchmarks/opentrons-mujoco-viz main @ 460169f, 2026-10-13
+# No LICENSE in either artifact; no opentrons/__init__.py in either.
+
+## opentrons_mujoco_viz-0.1.0-py3-none-any.whl
+opentrons/visualization/__init__.py
+opentrons/visualization/event_driver.py
+opentrons/visualization/generate_labware.py
+opentrons/visualization/modules.py
+opentrons/visualization/scene.py
+opentrons/visualization/assets/ot2.xml
+opentrons_mujoco_viz-0.1.0.dist-info/METADATA
+opentrons_mujoco_viz-0.1.0.dist-info/WHEEL
+opentrons_mujoco_viz-0.1.0.dist-info/top_level.txt
+opentrons_mujoco_viz-0.1.0.dist-info/RECORD
+
+## opentrons_mujoco_viz-0.1.0.tar.gz
+opentrons_mujoco_viz-0.1.0/PKG-INFO
+opentrons_mujoco_viz-0.1.0/README.md
+opentrons_mujoco_viz-0.1.0/opentrons/visualization/__init__.py
+opentrons_mujoco_viz-0.1.0/opentrons/visualization/assets/ot2.xml
+opentrons_mujoco_viz-0.1.0/opentrons/visualization/event_driver.py
+opentrons_mujoco_viz-0.1.0/opentrons/visualization/generate_labware.py
+opentrons_mujoco_viz-0.1.0/opentrons/visualization/modules.py
+opentrons_mujoco_viz-0.1.0/opentrons/visualization/scene.py
+opentrons_mujoco_viz-0.1.0/opentrons_mujoco_viz.egg-info/PKG-INFO
+opentrons_mujoco_viz-0.1.0/opentrons_mujoco_viz.egg-info/SOURCES.txt
+opentrons_mujoco_viz-0.1.0/opentrons_mujoco_viz.egg-info/dependency_links.txt
+opentrons_mujoco_viz-0.1.0/opentrons_mujoco_viz.egg-info/requires.txt
+opentrons_mujoco_viz-0.1.0/opentrons_mujoco_viz.egg-info/top_level.txt
+opentrons_mujoco_viz-0.1.0/pyproject.toml
+opentrons_mujoco_viz-0.1.0/setup.cfg
+
+## git merge-tree --write-tree main upstream/fix/build-backend  (PR #1)
+689e0eb4206c925befa23e0cc4249d661869ca76   # == main^{tree}

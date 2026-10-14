@@ -1,0 +1,11 @@
+Picking up tip from A1 of Opentrons 96 Tip Rack 300 µL on 1
+Aspirating 100.0 uL from A1 of NEST 12 Well Reservoir 15 mL on 3 at 92.86 uL/sec
+Dispensing 100.0 uL into B1 of Corning 96 Well Plate 360 µL Flat on 2 at 92.86 uL/sec
+Mixing 3 times with a volume of 50.0 ul
+Blowing out at B1 of Corning 96 Well Plate 360 µL Flat on 2
+Dropping tip into A1 of Opentrons Fixed Trash on 12
+Engaging Magnetic Module
+Setting Thermocycler well block temperature to 95.0 °C
+Thermocycler starting 1 repetitions of cycle composed of the following steps: [...]
+Setting Heater-Shaker to Shake at 500 RPM and waiting until reached
+Unlatching labware on Heater-Shaker

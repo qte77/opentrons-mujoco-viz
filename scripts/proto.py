@@ -1,0 +1,31 @@
+metadata = {"apiLevel": "2.15"}
+
+
+def run(ctx):
+    tips = ctx.load_labware("opentrons_96_tiprack_300ul", 1)
+    plate = ctx.load_labware("corning_96_wellplate_360ul_flat", 2)
+    res = ctx.load_labware("nest_12_reservoir_15ml", 3)
+    mag = ctx.load_module("magnetic module gen2", 4)
+    temp = ctx.load_module("temperature module gen2", 6)
+    tc = ctx.load_module("thermocycler module")
+    hs = ctx.load_module("heaterShakerModuleV1", 9) if False else None
+    p = ctx.load_instrument("p300_single_gen2", "right", tip_racks=[tips])
+    p.pick_up_tip()
+    p.aspirate(100, res["A1"])
+    p.dispense(100, plate["B1"])
+    p.mix(3, 50, plate["B1"])
+    p.blow_out(plate["B1"])
+    p.touch_tip(plate["B1"])
+    p.drop_tip()
+    ctx.delay(seconds=30)
+    mag.engage(height=10)
+    mag.disengage()
+    temp.set_temperature(4)
+    temp.deactivate()
+    tc.open_lid()
+    tc.set_block_temperature(95)
+    tc.set_lid_temperature(105)
+    tc.execute_profile(steps=[{"temperature": 95, "hold_time_seconds": 10}], repetitions=1)
+    tc.close_lid()
+    tc.deactivate()
+    ctx.pause()

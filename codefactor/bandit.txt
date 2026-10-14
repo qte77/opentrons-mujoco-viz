@@ -1,0 +1,117 @@
+Downloading pygments (1.2MiB)
+ Downloaded pygments
+Installed 7 packages in 12ms
+[main]	INFO	profile include tests: None
+[main]	INFO	profile exclude tests: None
+[main]	INFO	cli include tests: None
+[main]	INFO	cli exclude tests: None
+[main]	INFO	running on Python 3.14.7
+Run started:2026-10-13 23:33:36.956663+00:00
+
+Test results:
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: /workspaces/qte77/opentrons-mujoco-viz/opentrons/visualization/event_driver.py:242:4
+241	    """
+242	    import subprocess
+243	
+
+--------------------------------------------------
+>> Issue: [B607:start_process_with_partial_path] Starting a process with a partial executable path
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html
+   Location: /workspaces/qte77/opentrons-mujoco-viz/opentrons/visualization/event_driver.py:244:13
+243	
+244	    result = subprocess.run(
+245	        ["opentrons_simulate", str(protocol_path)],
+246	        capture_output=True, text=True,
+247	    )
+248	    events = parse_simulate_output(result.stdout)
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html
+   Location: /workspaces/qte77/opentrons-mujoco-viz/opentrons/visualization/event_driver.py:244:13
+243	
+244	    result = subprocess.run(
+245	        ["opentrons_simulate", str(protocol_path)],
+246	        capture_output=True, text=True,
+247	    )
+248	    events = parse_simulate_output(result.stdout)
+
+--------------------------------------------------
+>> Issue: [B110:try_except_pass] Try, Except, Pass detected.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b110_try_except_pass.html
+   Location: /workspaces/qte77/opentrons-mujoco-viz/opentrons/visualization/generate_labware.py:93:8
+92	                return body.difference(bores, engine="blender")
+93	        except Exception:
+94	            pass
+95	
+
+--------------------------------------------------
+>> Issue: [B310:blacklist] Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.
+   Severity: Medium   Confidence: High
+   CWE: CWE-22 (https://cwe.mitre.org/data/definitions/22.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_calls.html#b310-urllib-urlopen
+   Location: /workspaces/qte77/opentrons-mujoco-viz/opentrons/visualization/generate_labware.py:158:13
+157	    try:
+158	        with urllib.request.urlopen(INDEX_URL) as resp:
+159	            import json as _json
+
+--------------------------------------------------
+>> Issue: [B310:blacklist] Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.
+   Severity: Medium   Confidence: High
+   CWE: CWE-22 (https://cwe.mitre.org/data/definitions/22.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_calls.html#b310-urllib-urlopen
+   Location: /workspaces/qte77/opentrons-mujoco-viz/opentrons/visualization/generate_labware.py:164:21
+163	                dir_url = entry["url"]
+164	                with urllib.request.urlopen(dir_url) as r2:
+165	                    files = _json.loads(r2.read())
+
+--------------------------------------------------
+>> Issue: [B310:blacklist] Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.
+   Severity: Medium   Confidence: High
+   CWE: CWE-22 (https://cwe.mitre.org/data/definitions/22.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_calls.html#b310-urllib-urlopen
+   Location: /workspaces/qte77/opentrons-mujoco-viz/opentrons/visualization/generate_labware.py:169:29
+168	                        dest = out_dir / f"{entry['name']}_{fentry['name']}"
+169	                        with urllib.request.urlopen(fentry["download_url"]) as r3:
+170	                            dest.write_bytes(r3.read())
+
+--------------------------------------------------
+>> Issue: [B110:try_except_pass] Try, Except, Pass detected.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b110_try_except_pass.html
+   Location: /workspaces/qte77/opentrons-mujoco-viz/opentrons/visualization/scene.py:102:12
+101	                self._g_wells[name] = gid(name)
+102	            except Exception:
+103	                pass
+104	
+
+--------------------------------------------------
+
+Code scanned:
+	Total lines of code: 829
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 5
+		Medium: 3
+		High: 0
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 8
+Files skipped (0):

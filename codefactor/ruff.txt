@@ -1,0 +1,2289 @@
+Downloading ruff (9.9MiB)
+ Downloaded ruff
+Installed 1 package in 1ms
+warning: `incorrect-blank-line-before-class` (D203) and `blank-line-before-class` (D211) are incompatible. Ignoring `incorrect-blank-line-before-class`.
+warning: `multi-line-summary-first-line` (D212) and `multi-line-summary-second-line` (D213) are incompatible. Ignoring `multi-line-summary-second-line`.
+D104 Missing docstring in public package
+--> opentrons/__init__.py:1:1
+
+CPY001 Missing copyright notice at top of file
+--> opentrons/__init__.py:1:1
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> opentrons/__init__.py:7:1
+  |
+5 | # When upstreamed to Opentrons/opentrons, this file is replaced by opentrons'
+6 | # own __init__.py and opentrons/visualization/ lives directly inside that repo.
+7 | from pkgutil import extend_path
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+8 | __path__ = extend_path(__path__, __name__)
+  |
+help: Organize imports
+  |
+7 | from pkgutil import extend_path
+8 +
+9 | __path__ = extend_path(__path__, __name__)
+  |
+
+D205 1 blank line required between summary line and description
+  --> opentrons/visualization/__init__.py:1:1
+   |
+ 1 | / """
+ 2 | | opentrons.visualization
+ 3 | | =======================
+ 4 | | MuJoCo 3D visualisation of Opentrons OT-2 protocols.
+ 5 | |
+ 6 | | Quick start
+ 7 | | -----------
+ 8 | |     from opentrons.visualization import render_protocol, parse_simulate_output
+ 9 | |     import subprocess
+10 | |
+11 | |     result = subprocess.run(
+12 | |         ["opentrons_simulate", "my_protocol.py"],
+13 | |         capture_output=True, text=True,
+14 | |     )
+15 | |     events = parse_simulate_output(result.stdout)
+16 | |     render_protocol(events, "run.mp4")
+17 | |
+18 | | Or drive the scene directly:
+19 | |
+20 | |     from opentrons.visualization import WetLabScene
+21 | |
+22 | |     with WetLabScene() as scene:
+23 | |         scene.apply_event({"type": "pick", "slot": 1})
+24 | |         scene.apply_event({"type": "aspirate", "volume": 200, "slot": 3, "well": "A1"})
+25 | |         frame = scene.render_with_hud()
+26 | | """
+   | |___^
+27 |
+28 |   from .scene import WetLabScene, SLOT_XY
+   |
+help: Insert single blank line
+
+D212 [*] Multi-line docstring summary should start at the first line
+  --> opentrons/visualization/__init__.py:1:1
+   |
+ 1 | / """
+ 2 | | opentrons.visualization
+ 3 | | =======================
+ 4 | | MuJoCo 3D visualisation of Opentrons OT-2 protocols.
+ 5 | |
+ 6 | | Quick start
+ 7 | | -----------
+ 8 | |     from opentrons.visualization import render_protocol, parse_simulate_output
+ 9 | |     import subprocess
+10 | |
+11 | |     result = subprocess.run(
+12 | |         ["opentrons_simulate", "my_protocol.py"],
+13 | |         capture_output=True, text=True,
+14 | |     )
+15 | |     events = parse_simulate_output(result.stdout)
+16 | |     render_protocol(events, "run.mp4")
+17 | |
+18 | | Or drive the scene directly:
+19 | |
+20 | |     from opentrons.visualization import WetLabScene
+21 | |
+22 | |     with WetLabScene() as scene:
+23 | |         scene.apply_event({"type": "pick", "slot": 1})
+24 | |         scene.apply_event({"type": "aspirate", "volume": 200, "slot": 3, "well": "A1"})
+25 | |         frame = scene.render_with_hud()
+26 | | """
+   | |___^
+27 |
+28 |   from .scene import WetLabScene, SLOT_XY
+   |
+help: Remove whitespace after opening quotes
+  |
+  - """
+  - opentrons.visualization
+1 + """opentrons.visualization
+2 | =======================
+  |
+
+D400 First line should end with a period
+  --> opentrons/visualization/__init__.py:1:1
+   |
+ 1 | / """
+ 2 | | opentrons.visualization
+ 3 | | =======================
+ 4 | | MuJoCo 3D visualisation of Opentrons OT-2 protocols.
+ 5 | |
+ 6 | | Quick start
+ 7 | | -----------
+ 8 | |     from opentrons.visualization import render_protocol, parse_simulate_output
+ 9 | |     import subprocess
+10 | |
+11 | |     result = subprocess.run(
+12 | |         ["opentrons_simulate", "my_protocol.py"],
+13 | |         capture_output=True, text=True,
+14 | |     )
+15 | |     events = parse_simulate_output(result.stdout)
+16 | |     render_protocol(events, "run.mp4")
+17 | |
+18 | | Or drive the scene directly:
+19 | |
+20 | |     from opentrons.visualization import WetLabScene
+21 | |
+22 | |     with WetLabScene() as scene:
+23 | |         scene.apply_event({"type": "pick", "slot": 1})
+24 | |         scene.apply_event({"type": "aspirate", "volume": 200, "slot": 3, "well": "A1"})
+25 | |         frame = scene.render_with_hud()
+26 | | """
+   | |___^
+27 |
+28 |   from .scene import WetLabScene, SLOT_XY
+   |
+help: Add period
+  |
+1 | """
+  - opentrons.visualization
+2 + opentrons.visualization.
+3 | =======================
+  |
+note: This is an unsafe fix and may change runtime behavior
+
+D415 First line should end with a period, question mark, or exclamation point
+  --> opentrons/visualization/__init__.py:1:1
+   |
+ 1 | / """
+ 2 | | opentrons.visualization
+ 3 | | =======================
+ 4 | | MuJoCo 3D visualisation of Opentrons OT-2 protocols.
+ 5 | |
+ 6 | | Quick start
+ 7 | | -----------
+ 8 | |     from opentrons.visualization import render_protocol, parse_simulate_output
+ 9 | |     import subprocess
+10 | |
+11 | |     result = subprocess.run(
+12 | |         ["opentrons_simulate", "my_protocol.py"],
+13 | |         capture_output=True, text=True,
+14 | |     )
+15 | |     events = parse_simulate_output(result.stdout)
+16 | |     render_protocol(events, "run.mp4")
+17 | |
+18 | | Or drive the scene directly:
+19 | |
+20 | |     from opentrons.visualization import WetLabScene
+21 | |
+22 | |     with WetLabScene() as scene:
+23 | |         scene.apply_event({"type": "pick", "slot": 1})
+24 | |         scene.apply_event({"type": "aspirate", "volume": 200, "slot": 3, "well": "A1"})
+25 | |         frame = scene.render_with_hud()
+26 | | """
+   | |___^
+27 |
+28 |   from .scene import WetLabScene, SLOT_XY
+   |
+help: Add closing punctuation
+  |
+1 | """
+  - opentrons.visualization
+2 + opentrons.visualization.
+3 | =======================
+  |
+note: This is an unsafe fix and may change runtime behavior
+
+CPY001 Missing copyright notice at top of file
+--> opentrons/visualization/__init__.py:1:1
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> opentrons/visualization/__init__.py:28:1
+   |
+26 |   """
+27 |
+28 | / from .scene import WetLabScene, SLOT_XY
+29 | | from .event_driver import render_protocol, render_protocol_from_simulate, parse_simulate_output
+30 | | from .modules import (
+31 | |     ProtocolState,
+32 | |     MagneticModuleState,
+33 | |     TemperatureModuleState,
+34 | |     ThermocyclerState,
+35 | |     HeaterShakerState,
+36 | | )
+   | |_^
+37 |
+38 |   __all__ = [
+   |
+help: Organize imports
+   |
+27 |
+   - from .scene import WetLabScene, SLOT_XY
+   - from .event_driver import render_protocol, render_protocol_from_simulate, parse_simulate_output
+28 + from .event_driver import (
+29 +     parse_simulate_output,
+30 +     render_protocol,
+31 +     render_protocol_from_simulate,
+32 + )
+33 | from .modules import (
+34 +     HeaterShakerState,
+35 +     MagneticModuleState,
+36 |     ProtocolState,
+   -     MagneticModuleState,
+37 |     TemperatureModuleState,
+38 |     ThermocyclerState,
+   -     HeaterShakerState,
+39 | )
+40 + from .scene import SLOT_XY, WetLabScene
+41 |
+   |
+
+E501 Line too long (95 > 88)
+  --> opentrons/visualization/__init__.py:29:89
+   |
+28 | from .scene import WetLabScene, SLOT_XY
+29 | from .event_driver import render_protocol, render_protocol_from_simulate, parse_simulate_output
+   |                                                                                         ^^^^^^^
+30 | from .modules import (
+31 |     ProtocolState,
+   |
+
+RUF022 [*] `__all__` is not sorted
+  --> opentrons/visualization/__init__.py:38:11
+   |
+36 |   )
+37 |
+38 |   __all__ = [
+   |  ___________^
+39 | |     "WetLabScene",
+40 | |     "SLOT_XY",
+41 | |     "render_protocol",
+42 | |     "render_protocol_from_simulate",
+43 | |     "parse_simulate_output",
+44 | |     "ProtocolState",
+45 | |     "MagneticModuleState",
+46 | |     "TemperatureModuleState",
+47 | |     "ThermocyclerState",
+48 | |     "HeaterShakerState",
+49 | | ]
+   | |_^
+50 |
+51 |   __version__ = "0.1.0"
+   |
+help: Apply an isort-style sorting to `__all__`
+   |
+38 | __all__ = [
+   -     "WetLabScene",
+39 |     "SLOT_XY",
+   -     "render_protocol",
+   -     "render_protocol_from_simulate",
+   -     "parse_simulate_output",
+40 +     "HeaterShakerState",
+41 +     "MagneticModuleState",
+42 |     "ProtocolState",
+   -     "MagneticModuleState",
+43 |     "TemperatureModuleState",
+44 |     "ThermocyclerState",
+   -     "HeaterShakerState",
+45 +     "WetLabScene",
+46 +     "parse_simulate_output",
+47 +     "render_protocol",
+48 +     "render_protocol_from_simulate",
+49 | ]
+   |
+
+D212 [*] Multi-line docstring summary should start at the first line
+  --> opentrons/visualization/event_driver.py:1:1
+   |
+ 1 | / """
+ 2 | | render_protocol — turn a parsed opentrons_simulate run log into an MP4/GIF.
+ 3 | |
+ 4 | | The event format matches the output of runlog.py from Text2WetLab / Devin tasks.
+ 5 | |
+ 6 | | Quick start
+ 7 | | -----------
+ 8 | |     from opentrons.visualization import render_protocol
+ 9 | |     import subprocess, re
+10 | |
+11 | |     result = subprocess.run(
+12 | |         ["opentrons_simulate", "protocol.py"],
+13 | |         capture_output=True, text=True,
+14 | |     )
+15 | |     events = parse_simulate_output(result.stdout)
+16 | |     render_protocol(events, "protocol_run.mp4")
+17 | | """
+   | |___^
+18 |   from __future__ import annotations
+   |
+help: Remove whitespace after opening quotes
+  |
+  - """
+  - render_protocol — turn a parsed opentrons_simulate run log into an MP4/GIF.
+1 + """render_protocol — turn a parsed opentrons_simulate run log into an MP4/GIF.
+2 |
+  |
+
+CPY001 Missing copyright notice at top of file
+--> opentrons/visualization/event_driver.py:1:1
+
+TC002 Move third-party import `numpy` into a type-checking block
+  --> opentrons/visualization/event_driver.py:24:17
+   |
+22 | from typing import Optional
+23 |
+24 | import numpy as np
+   |                 ^^
+25 |
+26 | from .scene import WetLabScene
+   |
+help: Move into type-checking block
+   |
+21 | from pathlib import Path
+   - from typing import Optional
+22 + from typing import Optional, TYPE_CHECKING
+23 |
+   - import numpy as np
+24 |
+25 | from .scene import WetLabScene
+26 |
+27 + if TYPE_CHECKING:
+28 +     import numpy as np
+29 +
+30 | # ── Run-log parser ─────────────────────────────────────────────────────────────
+   |
+note: This is an unsafe fix and may change runtime behavior
+
+E501 Line too long (94 > 88)
+  --> opentrons/visualization/event_driver.py:38:89
+   |
+36 |     ("blow_out",  re.compile(r"Blowing out at " + WELL)),
+37 |     ("touch_tip", re.compile(r"Touching tip")),
+38 |     ("pick",      re.compile(r"Picking up tip from (?:well (\w+) of .+ on (?:slot )?(\d+))")),
+   |                                                                                         ^^^^^^
+39 |     ("pick_any",  re.compile(r"Picking up tip")),
+40 |     ("drop",      re.compile(r"(?:Dropping|Returning) tip")),
+   |
+
+C901 `parse_simulate_output` is too complex (30 > 10)
+  --> opentrons/visualization/event_driver.py:62:5
+   |
+62 | def parse_simulate_output(text: str) -> list[dict]:
+   |     ^^^^^^^^^^^^^^^^^^^^^
+63 |     """
+64 |     Parse the text output of `opentrons_simulate` into a list of event dicts.
+   |
+
+PLR0912 Too many branches (29 > 12)
+  --> opentrons/visualization/event_driver.py:62:5
+   |
+62 | def parse_simulate_output(text: str) -> list[dict]:
+   |     ^^^^^^^^^^^^^^^^^^^^^
+63 |     """
+64 |     Parse the text output of `opentrons_simulate` into a list of event dicts.
+   |
+
+PLR0915 Too many statements (84 > 50)
+  --> opentrons/visualization/event_driver.py:62:5
+   |
+62 | def parse_simulate_output(text: str) -> list[dict]:
+   |     ^^^^^^^^^^^^^^^^^^^^^
+63 |     """
+64 |     Parse the text output of `opentrons_simulate` into a list of event dicts.
+   |
+
+D212 [*] Multi-line docstring summary should start at the first line
+  --> opentrons/visualization/event_driver.py:63:5
+   |
+62 |   def parse_simulate_output(text: str) -> list[dict]:
+63 | /     """
+64 | |     Parse the text output of `opentrons_simulate` into a list of event dicts.
+65 | |
+66 | |     Compatible with the Devin task runlog.py format used in Text2WetLab.
+67 | |     """
+   | |_______^
+68 |       events: list[dict] = []
+69 |       for line in text.splitlines():
+   |
+help: Remove whitespace after opening quotes
+   |
+62 | def parse_simulate_output(text: str) -> list[dict]:
+   -     """
+   -     Parse the text output of `opentrons_simulate` into a list of event dicts.
+63 +     """Parse the text output of `opentrons_simulate` into a list of event dicts.
+64 |
+   |
+
+PLW2901 `for` loop variable `line` overwritten by assignment target
+  --> opentrons/visualization/event_driver.py:70:9
+   |
+68 |     events: list[dict] = []
+69 |     for line in text.splitlines():
+70 |         line = line.strip()
+   |         ^^^^
+71 |         if not line:
+72 |             continue
+   |
+
+F841 Local variable `matched` is assigned to but never used
+   --> opentrons/visualization/event_driver.py:154:13
+    |
+153 |             events.append(ev)
+154 |             matched = True
+    |             ^^^^^^^
+155 |             break  # first matching pattern wins per line
+    |
+help: Remove assignment to unused variable `matched`
+    |
+153 |             events.append(ev)
+    -             matched = True
+154 |             break  # first matching pattern wins per line
+    |
+note: This is an unsafe fix and may change runtime behavior
+
+UP045 [*] Use `X | None` for type annotations
+   --> opentrons/visualization/event_driver.py:160:22
+    |
+160 | def _slot(s: str) -> Optional[int]:
+    |                      ^^^^^^^^^^^^^
+161 |     m = re.search(r"(\d+)", str(s))
+162 |     return int(m.group(1)) if m else None
+    |
+help: Convert to `X | None`
+    |
+159 |
+    - def _slot(s: str) -> Optional[int]:
+160 + def _slot(s: str) -> int | None:
+161 |     m = re.search(r"(\d+)", str(s))
+    |
+
+PLR0913 Too many arguments in function definition (9 > 5)
+   --> opentrons/visualization/event_driver.py:167:5
+    |
+165 | # ── Renderer ───────────────────────────────────────────────────────────────────
+166 |
+167 | def render_protocol(
+    |     ^^^^^^^^^^^^^^^
+168 |     events: list[dict],
+169 |     output_path: str | Path = "protocol_run.mp4",
+    |
+
+PLR0917 Too many positional arguments (9 > 5)
+   --> opentrons/visualization/event_driver.py:167:5
+    |
+165 | # ── Renderer ───────────────────────────────────────────────────────────────────
+166 |
+167 | def render_protocol(
+    |     ^^^^^^^^^^^^^^^
+168 |     events: list[dict],
+169 |     output_path: str | Path = "protocol_run.mp4",
+    |
+
+FBT001 Boolean-typed positional argument in function definition
+   --> opentrons/visualization/event_driver.py:173:5
+    |
+171 |     fps: int = 12,
+172 |     frames_per_event: int = 4,
+173 |     hud: bool = True,
+    |     ^^^
+174 |     xml_path: Optional[Path] = None,
+175 |     render_w: int = 960,
+    |
+
+FBT002 Boolean default positional argument in function definition
+   --> opentrons/visualization/event_driver.py:173:5
+    |
+171 |     fps: int = 12,
+172 |     frames_per_event: int = 4,
+173 |     hud: bool = True,
+    |     ^^^
+174 |     xml_path: Optional[Path] = None,
+175 |     render_w: int = 960,
+    |
+
+UP045 [*] Use `X | None` for type annotations
+   --> opentrons/visualization/event_driver.py:174:15
+    |
+172 |     frames_per_event: int = 4,
+173 |     hud: bool = True,
+174 |     xml_path: Optional[Path] = None,
+    |               ^^^^^^^^^^^^^^
+175 |     render_w: int = 960,
+176 |     render_h: int = 540,
+    |
+help: Convert to `X | None`
+    |
+173 |     hud: bool = True,
+    -     xml_path: Optional[Path] = None,
+174 +     xml_path: Path | None = None,
+175 |     render_w: int = 960,
+    |
+
+D212 [*] Multi-line docstring summary should start at the first line
+   --> opentrons/visualization/event_driver.py:178:5
+    |
+176 |       render_h: int = 540,
+177 |   ) -> dict:
+178 | /     """
+179 | |     Render a parsed opentrons_simulate run log to an MP4 or GIF.
+180 | |
+181 | |     Parameters
+182 | |     ----------
+183 | |     events:
+184 | |         List of event dicts from parse_simulate_output().
+185 | |     output_path:
+186 | |         Destination file. Extension determines format (.mp4 or .gif).
+187 | |     camera:
+188 | |         Camera name: "iso", "side", "top", "front", or "deck".
+189 | |     fps:
+190 | |         Output frame rate.
+191 | |     frames_per_event:
+192 | |         Extra still frames captured after each event (for smooth playback).
+193 | |     hud:
+194 | |         Overlay HUD showing pipette state and module status.
+195 | |     xml_path:
+196 | |         Override MJCF path. Defaults to bundled assets/ot2.xml.
+197 | |     render_w, render_h:
+198 | |         Renderer dimensions.
+199 | |
+200 | |     Returns
+201 | |     -------
+202 | |     dict with keys: output_path, frame_count, event_count, final_state
+203 | |     """
+    | |_______^
+204 |       import imageio
+    |
+help: Remove whitespace after opening quotes
+    |
+177 | ) -> dict:
+    -     """
+    -     Render a parsed opentrons_simulate run log to an MP4 or GIF.
+178 +     """Render a parsed opentrons_simulate run log to an MP4 or GIF.
+179 |
+    |
+
+D413 [*] Missing blank line after last section ("Returns")
+   --> opentrons/visualization/event_driver.py:200:5
+    |
+198 |         Renderer dimensions.
+199 |
+200 |     Returns
+    |     ^^^^^^^
+201 |     -------
+202 |     dict with keys: output_path, frame_count, event_count, final_state
+    |
+help: Add blank line after "Returns"
+    |
+202 |     dict with keys: output_path, frame_count, event_count, final_state
+203 +
+204 |     """
+    |
+
+PLC0415 `import` should be at the top-level of a file
+   --> opentrons/visualization/event_driver.py:204:5
+    |
+202 |     dict with keys: output_path, frame_count, event_count, final_state
+203 |     """
+204 |     import imageio
+    |     ^^^^^^^^^^^^^^
+205 |
+206 |     output_path = Path(output_path)
+    |
+
+PERF401 Use `list.extend` to create a transformed list
+   --> opentrons/visualization/event_driver.py:217:17
+    |
+215 |             frames.extend(new_frames)
+216 |             for _ in range(frames_per_event - 1):
+217 |                 frames.append(render_fn(scene, camera))
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+218 |
+219 |         imageio.mimsave(str(output_path), frames, fps=fps)
+    |
+help: Replace for loop with list.extend
+
+ANN003 Missing type annotation for `**kwargs`
+   --> opentrons/visualization/event_driver.py:234:5
+    |
+232 |     camera: str = "iso",
+233 |     fps: int = 12,
+234 |     **kwargs,
+    |     ^^^^^^^^
+235 | ) -> dict:
+236 |     """
+    |
+
+D212 [*] Multi-line docstring summary should start at the first line
+   --> opentrons/visualization/event_driver.py:236:5
+    |
+234 |       **kwargs,
+235 |   ) -> dict:
+236 | /     """
+237 | |     Run opentrons_simulate on a protocol file and render the result.
+238 | |
+239 | |     Requires opentrons[extras] in the same environment, or opentrons_simulate
+240 | |     available on PATH.
+241 | |     """
+    | |_______^
+242 |       import subprocess
+    |
+help: Remove whitespace after opening quotes
+    |
+235 | ) -> dict:
+    -     """
+    -     Run opentrons_simulate on a protocol file and render the result.
+236 +     """Run opentrons_simulate on a protocol file and render the result.
+237 |
+    |
+
+PLC0415 `import` should be at the top-level of a file
+   --> opentrons/visualization/event_driver.py:242:5
+    |
+240 |     available on PATH.
+241 |     """
+242 |     import subprocess
+    |     ^^^^^^^^^^^^^^^^^
+243 |
+244 |     result = subprocess.run(
+    |
+
+S603 `subprocess` call: check for execution of untrusted input
+   --> opentrons/visualization/event_driver.py:244:14
+    |
+242 |     import subprocess
+243 |
+244 |     result = subprocess.run(
+    |              ^^^^^^^^^^^^^^
+245 |         ["opentrons_simulate", str(protocol_path)],
+246 |         capture_output=True, text=True,
+    |
+
+PLW1510 `subprocess.run` without explicit `check` argument
+   --> opentrons/visualization/event_driver.py:244:14
+    |
+242 |     import subprocess
+243 |
+244 |     result = subprocess.run(
+    |              ^^^^^^^^^^^^^^
+245 |         ["opentrons_simulate", str(protocol_path)],
+246 |         capture_output=True, text=True,
+    |
+help: Add explicit `check=False`
+    |
+245 |         ["opentrons_simulate", str(protocol_path)],
+    -         capture_output=True, text=True,
+246 +         check=False, capture_output=True, text=True,
+247 |     )
+    |
+note: This suggestion may be incorrect or produce invalid syntax. It requires manual review and cannot be applied automatically
+
+S607 Starting a process with a partial executable path
+   --> opentrons/visualization/event_driver.py:245:9
+    |
+244 |     result = subprocess.run(
+245 |         ["opentrons_simulate", str(protocol_path)],
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+246 |         capture_output=True, text=True,
+247 |     )
+    |
+
+E501 Line too long (93 > 88)
+   --> opentrons/visualization/event_driver.py:249:89
+    |
+247 |     )
+248 |     events = parse_simulate_output(result.stdout)
+249 |     return render_protocol(events, output_path=output_path, camera=camera, fps=fps, **kwargs)
+    |                                                                                         ^^^^^
+
+D212 [*] Multi-line docstring summary should start at the first line
+  --> opentrons/visualization/generate_labware.py:1:1
+   |
+ 1 | / """
+ 2 | | Generate OBJ meshes from Opentrons shared-data labware JSON definitions.
+ 3 | |
+ 4 | | These meshes can be referenced in MJCF as <mesh file="labware.obj"/> to give
+ 5 | | the scene real labware geometry instead of the default box/cylinder primitives.
+ 6 | |
+ 7 | | Usage
+ 8 | | -----
+ 9 | |     # Single labware
+10 | |     python -m opentrons.visualization.generate_labware \\
+11 | |         assets/labware_defs/corning_96_wellplate_360ul_flat/1.json
+12 | |
+13 | |     # Whole directory
+14 | |     python -m opentrons.visualization.generate_labware assets/labware_defs/
+15 | |
+16 | | Output: opentrons/visualization/assets/stl/<loadName>.obj
+17 | |
+18 | | Requirements
+19 | | ------------
+20 | |     pip install trimesh
+21 | |     (Optional) Blender for accurate boolean subtraction of well bores.
+22 | |     Without Blender, well bores are skipped and the mesh is a plain box.
+23 | |
+24 | | Auto-download shared-data
+25 | | -------------------------
+26 | |     from opentrons.visualization.generate_labware import download_shared_data
+27 | |     download_shared_data()   # writes to assets/labware_defs/
+28 | | """
+   | |___^
+29 |
+30 |   from __future__ import annotations
+   |
+help: Remove whitespace after opening quotes
+  |
+  - """
+  - Generate OBJ meshes from Opentrons shared-data labware JSON definitions.
+1 + """Generate OBJ meshes from Opentrons shared-data labware JSON definitions.
+2 |
+  |
+
+D301 Use `r"""` if any backslashes in a docstring
+  --> opentrons/visualization/generate_labware.py:1:1
+   |
+ 1 | / """
+ 2 | | Generate OBJ meshes from Opentrons shared-data labware JSON definitions.
+ 3 | |
+ 4 | | These meshes can be referenced in MJCF as <mesh file="labware.obj"/> to give
+ 5 | | the scene real labware geometry instead of the default box/cylinder primitives.
+ 6 | |
+ 7 | | Usage
+ 8 | | -----
+ 9 | |     # Single labware
+10 | |     python -m opentrons.visualization.generate_labware \\
+11 | |         assets/labware_defs/corning_96_wellplate_360ul_flat/1.json
+12 | |
+13 | |     # Whole directory
+14 | |     python -m opentrons.visualization.generate_labware assets/labware_defs/
+15 | |
+16 | | Output: opentrons/visualization/assets/stl/<loadName>.obj
+17 | |
+18 | | Requirements
+19 | | ------------
+20 | |     pip install trimesh
+21 | |     (Optional) Blender for accurate boolean subtraction of well bores.
+22 | |     Without Blender, well bores are skipped and the mesh is a plain box.
+23 | |
+24 | | Auto-download shared-data
+25 | | -------------------------
+26 | |     from opentrons.visualization.generate_labware import download_shared_data
+27 | |     download_shared_data()   # writes to assets/labware_defs/
+28 | | """
+   | |___^
+29 |
+30 |   from __future__ import annotations
+   |
+help: Add `r` prefix
+  |
+  - """
+1 + r"""
+2 | Generate OBJ meshes from Opentrons shared-data labware JSON definitions.
+  |
+note: This is an unsafe fix and may change runtime behavior
+
+CPY001 Missing copyright notice at top of file
+--> opentrons/visualization/generate_labware.py:1:1
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> opentrons/visualization/generate_labware.py:30:1
+   |
+28 |   """
+29 |
+30 | / from __future__ import annotations
+31 | | import json
+32 | | import pathlib
+33 | | import sys
+   | |__________^
+34 |
+35 |   ASSETS_DIR = pathlib.Path(__file__).parent / "assets"
+   |
+help: Organize imports
+   |
+30 | from __future__ import annotations
+31 +
+32 | import json
+   |
+
+PLR0913 Too many arguments in function definition (6 > 5)
+  --> opentrons/visualization/generate_labware.py:38:5
+   |
+38 | def box_mesh(x: float, y: float, z: float, w: float, d: float, h: float):
+   |     ^^^^^^^^
+39 |     import trimesh
+40 |     m = trimesh.creation.box(extents=[w, d, h])
+   |
+
+PLR0917 Too many positional arguments (6 > 5)
+  --> opentrons/visualization/generate_labware.py:38:5
+   |
+38 | def box_mesh(x: float, y: float, z: float, w: float, d: float, h: float):
+   |     ^^^^^^^^
+39 |     import trimesh
+40 |     m = trimesh.creation.box(extents=[w, d, h])
+   |
+
+ANN201 Missing return type annotation for public function `box_mesh`
+  --> opentrons/visualization/generate_labware.py:38:5
+   |
+38 | def box_mesh(x: float, y: float, z: float, w: float, d: float, h: float):
+   |     ^^^^^^^^
+39 |     import trimesh
+40 |     m = trimesh.creation.box(extents=[w, d, h])
+   |
+help: Add return type annotation
+
+D103 Missing docstring in public function
+  --> opentrons/visualization/generate_labware.py:38:5
+   |
+38 | def box_mesh(x: float, y: float, z: float, w: float, d: float, h: float):
+   |     ^^^^^^^^
+39 |     import trimesh
+40 |     m = trimesh.creation.box(extents=[w, d, h])
+   |
+
+PLC0415 `import` should be at the top-level of a file
+  --> opentrons/visualization/generate_labware.py:39:5
+   |
+38 | def box_mesh(x: float, y: float, z: float, w: float, d: float, h: float):
+39 |     import trimesh
+   |     ^^^^^^^^^^^^^^
+40 |     m = trimesh.creation.box(extents=[w, d, h])
+41 |     m.apply_translation([x + w / 2, y + d / 2, z + h / 2])
+   |
+
+PLR0913 Too many arguments in function definition (6 > 5)
+  --> opentrons/visualization/generate_labware.py:45:5
+   |
+45 | def cylinder_mesh(cx: float, cy: float, z_bottom: float, diameter: float, depth: float, segments: int = 16):
+   |     ^^^^^^^^^^^^^
+46 |     import trimesh
+47 |     r = diameter / 2
+   |
+
+PLR0917 Too many positional arguments (6 > 5)
+  --> opentrons/visualization/generate_labware.py:45:5
+   |
+45 | def cylinder_mesh(cx: float, cy: float, z_bottom: float, diameter: float, depth: float, segments: int = 16):
+   |     ^^^^^^^^^^^^^
+46 |     import trimesh
+47 |     r = diameter / 2
+   |
+
+ANN201 Missing return type annotation for public function `cylinder_mesh`
+  --> opentrons/visualization/generate_labware.py:45:5
+   |
+45 | def cylinder_mesh(cx: float, cy: float, z_bottom: float, diameter: float, depth: float, segments: int = 16):
+   |     ^^^^^^^^^^^^^
+46 |     import trimesh
+47 |     r = diameter / 2
+   |
+help: Add return type annotation
+
+D103 Missing docstring in public function
+  --> opentrons/visualization/generate_labware.py:45:5
+   |
+45 | def cylinder_mesh(cx: float, cy: float, z_bottom: float, diameter: float, depth: float, segments: int = 16):
+   |     ^^^^^^^^^^^^^
+46 |     import trimesh
+47 |     r = diameter / 2
+   |
+
+E501 Line too long (108 > 88)
+  --> opentrons/visualization/generate_labware.py:45:89
+   |
+45 | def cylinder_mesh(cx: float, cy: float, z_bottom: float, diameter: float, depth: float, segments: int = 16):
+   |                                                                                         ^^^^^^^^^^^^^^^^^^^^
+46 |     import trimesh
+47 |     r = diameter / 2
+   |
+
+PLC0415 `import` should be at the top-level of a file
+  --> opentrons/visualization/generate_labware.py:46:5
+   |
+45 | def cylinder_mesh(cx: float, cy: float, z_bottom: float, diameter: float, depth: float, segments: int = 16):
+46 |     import trimesh
+   |     ^^^^^^^^^^^^^^
+47 |     r = diameter / 2
+48 |     m = trimesh.creation.cylinder(radius=r, height=depth, sections=segments)
+   |
+
+ANN201 Missing return type annotation for public function `labware_from_def`
+  --> opentrons/visualization/generate_labware.py:53:5
+   |
+53 | def labware_from_def(def_path: str | pathlib.Path):
+   |     ^^^^^^^^^^^^^^^^
+54 |     """
+55 |     Build a trimesh.Trimesh from an Opentrons labware definition JSON.
+   |
+help: Add return type annotation
+
+D212 [*] Multi-line docstring summary should start at the first line
+  --> opentrons/visualization/generate_labware.py:54:5
+   |
+53 |   def labware_from_def(def_path: str | pathlib.Path):
+54 | /     """
+55 | |     Build a trimesh.Trimesh from an Opentrons labware definition JSON.
+56 | |
+57 | |     The outer body is a box of the labware's xDimension × yDimension × zDimension.
+58 | |     If a boolean engine is available (Blender / manifold), well bores are subtracted.
+59 | |     """
+   | |_______^
+60 |       import trimesh
+   |
+help: Remove whitespace after opening quotes
+   |
+53 | def labware_from_def(def_path: str | pathlib.Path):
+   -     """
+   -     Build a trimesh.Trimesh from an Opentrons labware definition JSON.
+54 +     """Build a trimesh.Trimesh from an Opentrons labware definition JSON.
+55 |
+   |
+
+RUF002 Docstring contains ambiguous `×` (MULTIPLICATION SIGN). Did you mean `x` (LATIN SMALL LETTER X)?
+  --> opentrons/visualization/generate_labware.py:57:57
+   |
+55 |     Build a trimesh.Trimesh from an Opentrons labware definition JSON.
+56 |
+57 |     The outer body is a box of the labware's xDimension × yDimension × zDimension.
+   |                                                         ^
+58 |     If a boolean engine is available (Blender / manifold), well bores are subtracted.
+59 |     """
+   |
+
+RUF002 Docstring contains ambiguous `×` (MULTIPLICATION SIGN). Did you mean `x` (LATIN SMALL LETTER X)?
+  --> opentrons/visualization/generate_labware.py:57:70
+   |
+55 |     Build a trimesh.Trimesh from an Opentrons labware definition JSON.
+56 |
+57 |     The outer body is a box of the labware's xDimension × yDimension × zDimension.
+   |                                                                      ^
+58 |     If a boolean engine is available (Blender / manifold), well bores are subtracted.
+59 |     """
+   |
+
+PLC0415 `import` should be at the top-level of a file
+  --> opentrons/visualization/generate_labware.py:60:5
+   |
+58 |     If a boolean engine is available (Blender / manifold), well bores are subtracted.
+59 |     """
+60 |     import trimesh
+   |     ^^^^^^^^^^^^^^
+61 |
+62 |     with open(def_path) as f:
+   |
+
+PTH123 `open()` should be replaced by `Path.open()`
+  --> opentrons/visualization/generate_labware.py:62:10
+   |
+60 |     import trimesh
+61 |
+62 |     with open(def_path) as f:
+   |          ^^^^
+63 |         defn = json.load(f)
+   |
+help: Replace with `Path.open()`
+
+N806 Variable `W` in function should be lowercase
+  --> opentrons/visualization/generate_labware.py:66:5
+   |
+65 |     dims = defn["dimensions"]
+66 |     W, D, H = dims["xDimension"], dims["yDimension"], dims["zDimension"]
+   |     ^
+67 |     body = box_mesh(0, 0, 0, W, D, H)
+   |
+
+N806 Variable `D` in function should be lowercase
+  --> opentrons/visualization/generate_labware.py:66:8
+   |
+65 |     dims = defn["dimensions"]
+66 |     W, D, H = dims["xDimension"], dims["yDimension"], dims["zDimension"]
+   |        ^
+67 |     body = box_mesh(0, 0, 0, W, D, H)
+   |
+
+N806 Variable `H` in function should be lowercase
+  --> opentrons/visualization/generate_labware.py:66:11
+   |
+65 |     dims = defn["dimensions"]
+66 |     W, D, H = dims["xDimension"], dims["yDimension"], dims["zDimension"]
+   |           ^
+67 |     body = box_mesh(0, 0, 0, W, D, H)
+   |
+
+PERF102 When using only the values of a dict use the `values()` method
+  --> opentrons/visualization/generate_labware.py:71:20
+   |
+69 |     wells = defn.get("wells", {})
+70 |     bore_meshes = []
+71 |     for _, well in wells.items():
+   |                    ^^^^^^^^^^^
+72 |         shape = well.get("shape", "circular")
+73 |         depth = well.get("depth", 5.0)
+   |
+help: Replace `.items()` with `.values()`
+   |
+70 |     bore_meshes = []
+   -     for _, well in wells.items():
+71 +     for well in wells.values():
+72 |         shape = well.get("shape", "circular")
+   |
+note: This is an unsafe fix and may change runtime behavior
+
+E501 Line too long (99 > 88)
+  --> opentrons/visualization/generate_labware.py:85:89
+   |
+83 |             xdim = well.get("xDimension", 8.0)
+84 |             ydim = well.get("yDimension", 8.0)
+85 |             bore_meshes.append(box_mesh(cx - xdim / 2, cy - ydim / 2, z_bottom, xdim, ydim, depth))
+   |                                                                                         ^^^^^^^^^^^
+86 |
+87 |     if bore_meshes:
+   |
+
+PLC0415 `import` should be at the top-level of a file
+  --> opentrons/visualization/generate_labware.py:89:13
+   |
+87 |     if bore_meshes:
+88 |         try:
+89 |             import trimesh.boolean as tbool
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+90 |             if tbool.exists():
+91 |                 bores = trimesh.util.concatenate(bore_meshes)
+   |
+
+S110 `try`-`except`-`pass` detected, consider logging the exception
+  --> opentrons/visualization/generate_labware.py:93:9
+   |
+91 |                   bores = trimesh.util.concatenate(bore_meshes)
+92 |                   return body.difference(bores, engine="blender")
+93 | /         except Exception:
+94 | |             pass
+   | |________________^
+95 |
+96 |       return body
+   |
+
+BLE001 Do not catch blind exception: `Exception`
+  --> opentrons/visualization/generate_labware.py:93:16
+   |
+91 |                 bores = trimesh.util.concatenate(bore_meshes)
+92 |                 return body.difference(bores, engine="blender")
+93 |         except Exception:
+   |                ^^^^^^^^^
+94 |             pass
+   |
+
+E501 Line too long (109 > 88)
+   --> opentrons/visualization/generate_labware.py:99:89
+    |
+ 99 | def convert_labware(def_path: str | pathlib.Path, out_dir: str | pathlib.Path | None = None) -> pathlib.Path:
+    |                                                                                         ^^^^^^^^^^^^^^^^^^^^^
+100 |     """Convert a single labware definition JSON to OBJ. Returns the output path."""
+101 |     def_path = pathlib.Path(def_path)
+    |
+
+PTH123 `open()` should be replaced by `Path.open()`
+   --> opentrons/visualization/generate_labware.py:105:10
+    |
+103 |     out_dir.mkdir(parents=True, exist_ok=True)
+104 |
+105 |     with open(def_path) as f:
+    |          ^^^^
+106 |         defn = json.load(f)
+107 |     name = defn.get("parameters", {}).get("loadName", def_path.stem)
+    |
+help: Replace with `Path.open()`
+
+C901 `download_shared_data` is too complex (11 > 10)
+   --> opentrons/visualization/generate_labware.py:114:5
+    |
+114 | def download_shared_data(out_dir: str | pathlib.Path | None = None) -> list[pathlib.Path]:
+    |     ^^^^^^^^^^^^^^^^^^^^
+115 |     """
+116 |     Download Opentrons shared-data labware definitions from the installed
+    |
+
+E501 Line too long (90 > 88)
+   --> opentrons/visualization/generate_labware.py:114:89
+    |
+114 | def download_shared_data(out_dir: str | pathlib.Path | None = None) -> list[pathlib.Path]:
+    |                                                                                         ^^
+115 |     """
+116 |     Download Opentrons shared-data labware definitions from the installed
+    |
+
+D205 1 blank line required between summary line and description
+   --> opentrons/visualization/generate_labware.py:115:5
+    |
+114 |   def download_shared_data(out_dir: str | pathlib.Path | None = None) -> list[pathlib.Path]:
+115 | /     """
+116 | |     Download Opentrons shared-data labware definitions from the installed
+117 | |     opentrons-shared-data package (if installed) or from the GitHub release.
+118 | |
+119 | |     Returns list of downloaded .json paths.
+120 | |     """
+    | |_______^
+121 |       out_dir = pathlib.Path(out_dir) if out_dir else ASSETS_DIR / "labware_defs"
+122 |       out_dir.mkdir(parents=True, exist_ok=True)
+    |
+help: Insert single blank line
+
+D212 [*] Multi-line docstring summary should start at the first line
+   --> opentrons/visualization/generate_labware.py:115:5
+    |
+114 |   def download_shared_data(out_dir: str | pathlib.Path | None = None) -> list[pathlib.Path]:
+115 | /     """
+116 | |     Download Opentrons shared-data labware definitions from the installed
+117 | |     opentrons-shared-data package (if installed) or from the GitHub release.
+118 | |
+119 | |     Returns list of downloaded .json paths.
+120 | |     """
+    | |_______^
+121 |       out_dir = pathlib.Path(out_dir) if out_dir else ASSETS_DIR / "labware_defs"
+122 |       out_dir.mkdir(parents=True, exist_ok=True)
+    |
+help: Remove whitespace after opening quotes
+    |
+114 | def download_shared_data(out_dir: str | pathlib.Path | None = None) -> list[pathlib.Path]:
+    -     """
+    -     Download Opentrons shared-data labware definitions from the installed
+115 +     """Download Opentrons shared-data labware definitions from the installed
+116 |     opentrons-shared-data package (if installed) or from the GitHub release.
+    |
+
+PLC0415 `import` should be at the top-level of a file
+   --> opentrons/visualization/generate_labware.py:127:9
+    |
+125 |     # Try from installed package first
+126 |     try:
+127 |         import opentrons_shared_data.labware as sd_lw
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+128 |         import importlib.resources as pkg_res
+129 |         for name in sd_lw.load_definition_by_name.__code__.co_consts:
+    |
+
+I001 [*] Import block is un-sorted or un-formatted
+   --> opentrons/visualization/generate_labware.py:127:9
+    |
+125 |       # Try from installed package first
+126 |       try:
+127 | /         import opentrons_shared_data.labware as sd_lw
+128 | |         import importlib.resources as pkg_res
+    | |_____________________________________________^
+129 |           for name in sd_lw.load_definition_by_name.__code__.co_consts:
+130 |               if isinstance(name, str) and name.endswith(".json"):
+    |
+help: Organize imports
+    |
+126 |     try:
+    -         import opentrons_shared_data.labware as sd_lw
+127 |         import importlib.resources as pkg_res
+128 +
+129 +         import opentrons_shared_data.labware as sd_lw
+130 |         for name in sd_lw.load_definition_by_name.__code__.co_consts:
+    |
+
+PLC0415 `import` should be at the top-level of a file
+   --> opentrons/visualization/generate_labware.py:128:9
+    |
+126 |     try:
+127 |         import opentrons_shared_data.labware as sd_lw
+128 |         import importlib.resources as pkg_res
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+129 |         for name in sd_lw.load_definition_by_name.__code__.co_consts:
+130 |             if isinstance(name, str) and name.endswith(".json"):
+    |
+
+F401 `importlib.resources` imported but unused; consider using `importlib.util.find_spec` to test for availability
+   --> opentrons/visualization/generate_labware.py:128:39
+    |
+126 |     try:
+127 |         import opentrons_shared_data.labware as sd_lw
+128 |         import importlib.resources as pkg_res
+    |                                       ^^^^^^^
+129 |         for name in sd_lw.load_definition_by_name.__code__.co_consts:
+130 |             if isinstance(name, str) and name.endswith(".json"):
+    |
+help: Remove unused import: `importlib.resources`
+
+PLC0415 `import` should be at the top-level of a file
+   --> opentrons/visualization/generate_labware.py:133:9
+    |
+131 |                 pass  # enumerate via get_all_shared_data_filenames if available
+132 |         # Simpler: locate the package data directory
+133 |         import opentrons_shared_data
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+134 |         data_dir = pathlib.Path(opentrons_shared_data.__file__).parent / "labware" / "definitions" / "2"
+135 |         if data_dir.exists():
+    |
+
+E501 Line too long (104 > 88)
+   --> opentrons/visualization/generate_labware.py:134:89
+    |
+132 |         # Simpler: locate the package data directory
+133 |         import opentrons_shared_data
+134 |         data_dir = pathlib.Path(opentrons_shared_data.__file__).parent / "labware" / "definitions" / "2"
+    |                                                                                         ^^^^^^^^^^^^^^^^
+135 |         if data_dir.exists():
+136 |             for json_path in data_dir.rglob("*.json"):
+    |
+
+T201 `print` found
+   --> opentrons/visualization/generate_labware.py:140:13
+    |
+138 |                 dest.write_bytes(json_path.read_bytes())
+139 |                 written.append(dest)
+140 |             print(f"Copied {len(written)} definitions from installed opentrons-shared-data → {out_dir}")
+    |             ^^^^^
+141 |             return written
+142 |     except ImportError:
+    |
+help: Remove `print`
+    |
+139 |                 written.append(dest)
+    -             print(f"Copied {len(written)} definitions from installed opentrons-shared-data → {out_dir}")
+140 |             return written
+    |
+note: This is an unsafe fix and may change runtime behavior
+
+E501 Line too long (104 > 88)
+   --> opentrons/visualization/generate_labware.py:140:89
+    |
+138 |                 dest.write_bytes(json_path.read_bytes())
+139 |                 written.append(dest)
+140 |             print(f"Copied {len(written)} definitions from installed opentrons-shared-data → {out_dir}")
+    |                                                                                         ^^^^^^^^^^^^^^^^
+141 |             return written
+142 |     except ImportError:
+    |
+
+PLC0415 `import` should be at the top-level of a file
+   --> opentrons/visualization/generate_labware.py:146:5
+    |
+145 |     # Fallback: fetch from GitHub
+146 |     import urllib.request
+    |     ^^^^^^^^^^^^^^^^^^^^^
+147 |     import urllib.error
+    |
+
+I001 [*] Import block is un-sorted or un-formatted
+   --> opentrons/visualization/generate_labware.py:146:5
+    |
+145 |       # Fallback: fetch from GitHub
+146 | /     import urllib.request
+147 | |     import urllib.error
+    | |_______________________^
+148 |
+149 |       API_URL = (
+    |
+help: Organize imports
+    |
+145 |     # Fallback: fetch from GitHub
+146 +     import urllib.error
+147 |     import urllib.request
+    -     import urllib.error
+148 |
+    |
+
+PLC0415 `import` should be at the top-level of a file
+   --> opentrons/visualization/generate_labware.py:147:5
+    |
+145 |     # Fallback: fetch from GitHub
+146 |     import urllib.request
+147 |     import urllib.error
+    |     ^^^^^^^^^^^^^^^^^^^
+148 |
+149 |     API_URL = (
+    |
+
+N806 Variable `API_URL` in function should be lowercase
+   --> opentrons/visualization/generate_labware.py:149:5
+    |
+147 |     import urllib.error
+148 |
+149 |     API_URL = (
+    |     ^^^^^^^
+150 |         "https://raw.githubusercontent.com/Opentrons/opentrons/edge/"
+151 |         "shared-data/labware/definitions/2/"
+    |
+
+F841 Local variable `API_URL` is assigned to but never used
+   --> opentrons/visualization/generate_labware.py:149:5
+    |
+147 |     import urllib.error
+148 |
+149 |     API_URL = (
+    |     ^^^^^^^
+150 |         "https://raw.githubusercontent.com/Opentrons/opentrons/edge/"
+151 |         "shared-data/labware/definitions/2/"
+    |
+help: Remove assignment to unused variable `API_URL`
+    |
+148 |
+    -     API_URL = (
+    -         "https://raw.githubusercontent.com/Opentrons/opentrons/edge/"
+    -         "shared-data/labware/definitions/2/"
+    -     )
+149 |     INDEX_URL = (
+    |
+note: This is an unsafe fix and may change runtime behavior
+
+N806 Variable `INDEX_URL` in function should be lowercase
+   --> opentrons/visualization/generate_labware.py:153:5
+    |
+151 |         "shared-data/labware/definitions/2/"
+152 |     )
+153 |     INDEX_URL = (
+    |     ^^^^^^^^^
+154 |         "https://api.github.com/repos/Opentrons/opentrons/contents/"
+155 |         "shared-data/labware/definitions/2"
+    |
+
+PLC0415 `import` should be at the top-level of a file
+   --> opentrons/visualization/generate_labware.py:159:13
+    |
+157 |     try:
+158 |         with urllib.request.urlopen(INDEX_URL) as resp:
+159 |             import json as _json
+    |             ^^^^^^^^^^^^^^^^^^^^
+160 |             entries = _json.loads(resp.read())
+161 |         for entry in entries:
+    |
+
+S310 Audit URL open for permitted schemes. Allowing use of `file:` or custom schemes is often unexpected.
+   --> opentrons/visualization/generate_labware.py:164:22
+    |
+162 |             if entry["type"] == "dir":
+163 |                 dir_url = entry["url"]
+164 |                 with urllib.request.urlopen(dir_url) as r2:
+    |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+165 |                     files = _json.loads(r2.read())
+166 |                 for fentry in files:
+    |
+
+S310 Audit URL open for permitted schemes. Allowing use of `file:` or custom schemes is often unexpected.
+   --> opentrons/visualization/generate_labware.py:169:30
+    |
+167 |                     if fentry["name"].endswith(".json"):
+168 |                         dest = out_dir / f"{entry['name']}_{fentry['name']}"
+169 |                         with urllib.request.urlopen(fentry["download_url"]) as r3:
+    |                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+170 |                             dest.write_bytes(r3.read())
+171 |                         written.append(dest)
+    |
+
+BLE001 Do not catch blind exception: `Exception`
+   --> opentrons/visualization/generate_labware.py:172:12
+    |
+170 |                             dest.write_bytes(r3.read())
+171 |                         written.append(dest)
+172 |     except Exception as e:
+    |            ^^^^^^^^^
+173 |         print(f"Warning: could not fetch shared data: {e}")
+    |
+
+T201 `print` found
+   --> opentrons/visualization/generate_labware.py:173:9
+    |
+171 |                         written.append(dest)
+172 |     except Exception as e:
+173 |         print(f"Warning: could not fetch shared data: {e}")
+    |         ^^^^^
+174 |
+175 |     print(f"Downloaded {len(written)} definitions → {out_dir}")
+    |
+help: Remove `print`
+    |
+172 |     except Exception as e:
+    -         print(f"Warning: could not fetch shared data: {e}")
+173 +         pass
+174 |
+    |
+note: This is an unsafe fix and may change runtime behavior
+
+T201 `print` found
+   --> opentrons/visualization/generate_labware.py:175:5
+    |
+173 |         print(f"Warning: could not fetch shared data: {e}")
+174 |
+175 |     print(f"Downloaded {len(written)} definitions → {out_dir}")
+    |     ^^^^^
+176 |     return written
+    |
+help: Remove `print`
+    |
+174 |
+    -     print(f"Downloaded {len(written)} definitions → {out_dir}")
+175 |     return written
+    |
+note: This is an unsafe fix and may change runtime behavior
+
+D103 Missing docstring in public function
+   --> opentrons/visualization/generate_labware.py:179:5
+    |
+179 | def main() -> None:
+    |     ^^^^
+180 |     if len(sys.argv) < 2:
+181 |         print("Usage: python -m opentrons.visualization.generate_labware <def.json|defs_dir/>")
+    |
+
+PLR2004 Magic value used in comparison, consider replacing `2` with a constant variable
+   --> opentrons/visualization/generate_labware.py:180:24
+    |
+179 | def main() -> None:
+180 |     if len(sys.argv) < 2:
+    |                        ^
+181 |         print("Usage: python -m opentrons.visualization.generate_labware <def.json|defs_dir/>")
+182 |         sys.exit(1)
+    |
+
+T201 `print` found
+   --> opentrons/visualization/generate_labware.py:181:9
+    |
+179 | def main() -> None:
+180 |     if len(sys.argv) < 2:
+181 |         print("Usage: python -m opentrons.visualization.generate_labware <def.json|defs_dir/>")
+    |         ^^^^^
+182 |         sys.exit(1)
+    |
+help: Remove `print`
+    |
+180 |     if len(sys.argv) < 2:
+    -         print("Usage: python -m opentrons.visualization.generate_labware <def.json|defs_dir/>")
+181 |         sys.exit(1)
+    |
+note: This is an unsafe fix and may change runtime behavior
+
+E501 Line too long (95 > 88)
+   --> opentrons/visualization/generate_labware.py:181:89
+    |
+179 | def main() -> None:
+180 |     if len(sys.argv) < 2:
+181 |         print("Usage: python -m opentrons.visualization.generate_labware <def.json|defs_dir/>")
+    |                                                                                         ^^^^^^^
+182 |         sys.exit(1)
+    |
+
+T201 `print` found
+   --> opentrons/visualization/generate_labware.py:191:13
+    |
+189 |         try:
+190 |             out = convert_labware(p, out_dir)
+191 |             print(f"  {p.stem} → {out}")
+    |             ^^^^^
+192 |         except Exception as e:
+193 |             print(f"  SKIP {p.stem} ({e})")
+    |
+help: Remove `print`
+    |
+190 |             out = convert_labware(p, out_dir)
+    -             print(f"  {p.stem} → {out}")
+191 |         except Exception as e:
+    |
+note: This is an unsafe fix and may change runtime behavior
+
+PERF203 `try`-`except` within a loop incurs performance overhead
+   --> opentrons/visualization/generate_labware.py:192:9
+    |
+190 |               out = convert_labware(p, out_dir)
+191 |               print(f"  {p.stem} → {out}")
+192 | /         except Exception as e:
+193 | |             print(f"  SKIP {p.stem} ({e})")
+    | |___________________________________________^
+
+BLE001 Do not catch blind exception: `Exception`
+   --> opentrons/visualization/generate_labware.py:192:16
+    |
+190 |             out = convert_labware(p, out_dir)
+191 |             print(f"  {p.stem} → {out}")
+192 |         except Exception as e:
+    |                ^^^^^^^^^
+193 |             print(f"  SKIP {p.stem} ({e})")
+    |
+
+T201 `print` found
+   --> opentrons/visualization/generate_labware.py:193:13
+    |
+191 |             print(f"  {p.stem} → {out}")
+192 |         except Exception as e:
+193 |             print(f"  SKIP {p.stem} ({e})")
+    |             ^^^^^
+help: Remove `print`
+    |
+192 |         except Exception as e:
+    -             print(f"  SKIP {p.stem} ({e})")
+193 +             pass
+194 |
+    |
+note: This is an unsafe fix and may change runtime behavior
+
+CPY001 Missing copyright notice at top of file
+--> opentrons/visualization/modules.py:1:1
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> opentrons/visualization/modules.py:2:1
+  |
+1 |   """Module state dataclasses — pure Python, no MuJoCo dependency."""
+2 | / from __future__ import annotations
+3 | | from dataclasses import dataclass, field
+4 | | from typing import Optional
+  | |___________________________^
+help: Organize imports
+  |
+2 | from __future__ import annotations
+3 +
+4 | from dataclasses import dataclass, field
+  |
+
+D101 Missing docstring in public class
+  --> opentrons/visualization/modules.py:8:7
+   |
+ 7 | @dataclass
+ 8 | class MagneticModuleState:
+   |       ^^^^^^^^^^^^^^^^^^^
+ 9 |     engaged: bool = False
+10 |     height_mm: float = 0.0
+   |
+
+D101 Missing docstring in public class
+  --> opentrons/visualization/modules.py:14:7
+   |
+13 | @dataclass
+14 | class TemperatureModuleState:
+   |       ^^^^^^^^^^^^^^^^^^^^^^
+15 |     active: bool = False
+16 |     celsius: float = 23.0
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> opentrons/visualization/modules.py:17:21
+   |
+15 |     active: bool = False
+16 |     celsius: float = 23.0
+17 |     target_celsius: Optional[float] = None
+   |                     ^^^^^^^^^^^^^^^
+help: Convert to `X | None`
+   |
+16 |     celsius: float = 23.0
+   -     target_celsius: Optional[float] = None
+17 +     target_celsius: float | None = None
+18 |
+   |
+
+D101 Missing docstring in public class
+  --> opentrons/visualization/modules.py:21:7
+   |
+20 | @dataclass
+21 | class ThermocyclerState:
+   |       ^^^^^^^^^^^^^^^^^
+22 |     lid_open: bool = True
+23 |     block_celsius: float = 23.0
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> opentrons/visualization/modules.py:26:19
+   |
+24 |     lid_celsius: float = 23.0
+25 |     profile_running: bool = False
+26 |     current_step: Optional[str] = None
+   |                   ^^^^^^^^^^^^^
+help: Convert to `X | None`
+   |
+25 |     profile_running: bool = False
+   -     current_step: Optional[str] = None
+26 +     current_step: str | None = None
+27 |
+   |
+
+D101 Missing docstring in public class
+  --> opentrons/visualization/modules.py:30:7
+   |
+29 | @dataclass
+30 | class HeaterShakerState:
+   |       ^^^^^^^^^^^^^^^^^
+31 |     latch_open: bool = True
+32 |     rpm: float = 0.0
+   |
+
+D204 [*] 1 blank line required after class docstring
+  --> opentrons/visualization/modules.py:39:5
+   |
+37 | @dataclass
+38 | class ProtocolState:
+39 |     """Full protocol state snapshot, updated by each event."""
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+40 |     # Pipette
+41 |     pipette_vol: float = 0.0
+   |
+help: Insert 1 blank line after class docstring
+   |
+39 |     """Full protocol state snapshot, updated by each event."""
+40 +
+41 |     # Pipette
+   |
+
+D102 Missing docstring in public method
+  --> opentrons/visualization/modules.py:60:9
+   |
+58 |     step_count: int = 0
+59 |
+60 |     def well_vol(self, slot: int, well: str) -> float:
+   |         ^^^^^^^^
+61 |         return self.well_volumes.get(slot, {}).get(well, 0.0)
+   |
+
+D102 Missing docstring in public method
+  --> opentrons/visualization/modules.py:63:9
+   |
+61 |         return self.well_volumes.get(slot, {}).get(well, 0.0)
+62 |
+63 |     def add_to_well(self, slot: int, well: str, vol: float) -> None:
+   |         ^^^^^^^^^^^
+64 |         if slot not in self.well_volumes:
+65 |             self.well_volumes[slot] = {}
+   |
+
+E501 Line too long (94 > 88)
+  --> opentrons/visualization/modules.py:66:89
+   |
+64 |         if slot not in self.well_volumes:
+65 |             self.well_volumes[slot] = {}
+66 |         self.well_volumes[slot][well] = max(0.0, self.well_volumes[slot].get(well, 0.0) + vol)
+   |                                                                                         ^^^^^^
+67 |
+68 |     def apply_event(self, event: dict) -> None:
+   |
+
+C901 `apply_event` is too complex (30 > 10)
+  --> opentrons/visualization/modules.py:68:9
+   |
+66 |         self.well_volumes[slot][well] = max(0.0, self.well_volumes[slot].get(well, 0.0) + vol)
+67 |
+68 |     def apply_event(self, event: dict) -> None:
+   |         ^^^^^^^^^^^
+69 |         """Update state from a single parsed run-log event."""
+70 |         etype = event.get("type")
+   |
+
+PLR0912 Too many branches (29 > 12)
+  --> opentrons/visualization/modules.py:68:9
+   |
+66 |         self.well_volumes[slot][well] = max(0.0, self.well_volumes[slot].get(well, 0.0) + vol)
+67 |
+68 |     def apply_event(self, event: dict) -> None:
+   |         ^^^^^^^^^^^
+69 |         """Update state from a single parsed run-log event."""
+70 |         etype = event.get("type")
+   |
+
+PLR0915 Too many statements (86 > 50)
+  --> opentrons/visualization/modules.py:68:9
+   |
+66 |         self.well_volumes[slot][well] = max(0.0, self.well_volumes[slot].get(well, 0.0) + vol)
+67 |
+68 |     def apply_event(self, event: dict) -> None:
+   |         ^^^^^^^^^^^
+69 |         """Update state from a single parsed run-log event."""
+70 |         etype = event.get("type")
+   |
+
+D212 [*] Multi-line docstring summary should start at the first line
+ --> opentrons/visualization/scene.py:1:1
+  |
+1 | / """
+2 | | WetLabScene — MuJoCo 3D scene for Opentrons OT-2 protocol visualisation.
+3 | |
+4 | | Driven by parsed opentrons_simulate run-log events (see event_driver.py).
+5 | | Liquid volumes are tracked analytically; MuJoCo handles gantry kinematics only.
+6 | | """
+  | |___^
+7 |   from __future__ import annotations
+  |
+help: Remove whitespace after opening quotes
+  |
+  - """
+  - WetLabScene — MuJoCo 3D scene for Opentrons OT-2 protocol visualisation.
+1 + """WetLabScene — MuJoCo 3D scene for Opentrons OT-2 protocol visualisation.
+2 |
+  |
+
+CPY001 Missing copyright notice at top of file
+--> opentrons/visualization/scene.py:1:1
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> opentrons/visualization/scene.py:7:1
+   |
+ 5 |   Liquid volumes are tracked analytically; MuJoCo handles gantry kinematics only.
+ 6 |   """
+ 7 | / from __future__ import annotations
+ 8 | |
+ 9 | | import pathlib
+10 | | from typing import Optional
+11 | |
+12 | | import numpy as np
+13 | | import mujoco
+14 | |
+15 | | from .modules import ProtocolState
+   | |__________________________________^
+16 |
+17 |   XML_PATH = pathlib.Path(__file__).parent / "assets" / "ot2.xml"
+   |
+help: Organize imports
+   |
+11 |
+12 + import mujoco
+13 | import numpy as np
+   - import mujoco
+14 |
+   |
+
+D212 [*] Multi-line docstring summary should start at the first line
+  --> opentrons/visualization/scene.py:47:5
+   |
+46 |   class WetLabScene:
+47 | /     """
+48 | |     MuJoCo scene for a single OT-2 protocol run.
+49 | |
+50 | |     Parameters
+51 | |     ----------
+52 | |     xml_path:
+53 | |         Path to the MJCF model. Defaults to the bundled assets/ot2.xml.
+54 | |     render_w, render_h:
+55 | |         Offscreen renderer dimensions.
+56 | |     """
+   | |_______^
+57 |
+58 |       RENDER_W = 960
+   |
+help: Remove whitespace after opening quotes
+   |
+46 | class WetLabScene:
+   -     """
+   -     MuJoCo scene for a single OT-2 protocol run.
+47 +     """MuJoCo scene for a single OT-2 protocol run.
+48 |
+   |
+
+D413 [*] Missing blank line after last section ("Parameters")
+  --> opentrons/visualization/scene.py:50:5
+   |
+48 |     MuJoCo scene for a single OT-2 protocol run.
+49 |
+50 |     Parameters
+   |     ^^^^^^^^^^
+51 |     ----------
+52 |     xml_path:
+   |
+help: Add blank line after "Parameters"
+   |
+55 |         Offscreen renderer dimensions.
+56 +
+57 |     """
+   |
+
+ANN204 Missing return type annotation for special method `__init__`
+  --> opentrons/visualization/scene.py:62:9
+   |
+60 |     PIPETTE_MAX = 1000.0
+61 |
+62 |     def __init__(
+   |         ^^^^^^^^
+63 |         self,
+64 |         xml_path: Optional[pathlib.Path] = None,
+   |
+help: Add return type annotation: `None`
+   |
+66 |         render_h: int = 540,
+   -     ):
+67 +     ) -> None:
+68 |         self.RENDER_W = render_w
+   |
+note: This is an unsafe fix and may change runtime behavior
+
+D107 Missing docstring in `__init__`
+  --> opentrons/visualization/scene.py:62:9
+   |
+60 |     PIPETTE_MAX = 1000.0
+61 |
+62 |     def __init__(
+   |         ^^^^^^^^
+63 |         self,
+64 |         xml_path: Optional[pathlib.Path] = None,
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> opentrons/visualization/scene.py:64:19
+   |
+62 |     def __init__(
+63 |         self,
+64 |         xml_path: Optional[pathlib.Path] = None,
+   |                   ^^^^^^^^^^^^^^^^^^^^^^
+65 |         render_w: int = 960,
+66 |         render_h: int = 540,
+   |
+help: Convert to `X | None`
+   |
+63 |         self,
+   -         xml_path: Optional[pathlib.Path] = None,
+64 +         xml_path: pathlib.Path | None = None,
+65 |         render_w: int = 960,
+   |
+
+SIM105 Use `contextlib.suppress(Exception)` instead of `try`-`except`-`pass`
+   --> opentrons/visualization/scene.py:100:13
+    |
+ 98 |           for row in "ABCDEFGH":
+ 99 |               name = f"w_{row}1"
+100 | /             try:
+101 | |                 self._g_wells[name] = gid(name)
+102 | |             except Exception:
+103 | |                 pass
+    | |____________________^
+104 |
+105 |           self.state = ProtocolState()
+    |
+help: Replace `try`-`except`-`pass` with `with contextlib.suppress(Exception): ...`
+    |
+15  | from .modules import ProtocolState
+16  + import contextlib
+17  |
+--------------------------------------------------------------------------------
+100 |             name = f"w_{row}1"
+    -             try:
+101 +             with contextlib.suppress(Exception):
+102 |                 self._g_wells[name] = gid(name)
+    -             except Exception:
+    -                 pass
+103 |
+    |
+note: This is an unsafe fix and may change runtime behavior
+
+S110 `try`-`except`-`pass` detected, consider logging the exception
+   --> opentrons/visualization/scene.py:102:13
+    |
+100 |               try:
+101 |                   self._g_wells[name] = gid(name)
+102 | /             except Exception:
+103 | |                 pass
+    | |____________________^
+104 |
+105 |           self.state = ProtocolState()
+    |
+
+BLE001 Do not catch blind exception: `Exception`
+   --> opentrons/visualization/scene.py:102:20
+    |
+100 |             try:
+101 |                 self._g_wells[name] = gid(name)
+102 |             except Exception:
+    |                    ^^^^^^^^^
+103 |                 pass
+    |
+
+FBT001 Boolean-typed positional argument in function definition
+   --> opentrons/visualization/scene.py:120:67
+    |
+118 |             mujoco.mj_step(self.model, self.data)
+119 |
+120 |     def move_to_slot(self, slot: int, well_offset_x: float = 0.0, work: bool = False, steps: int = 120) -> None:
+    |                                                                   ^^^^
+121 |         """Move pipette over a slot, optionally descending to working depth."""
+122 |         sx, sy = SLOT_XY.get(slot, (0.0, 0.0))
+    |
+help: Consider adding `@typing.override` if changing the function signature would violate the Liskov Substitution Principle
+
+FBT002 Boolean default positional argument in function definition
+   --> opentrons/visualization/scene.py:120:67
+    |
+118 |             mujoco.mj_step(self.model, self.data)
+119 |
+120 |     def move_to_slot(self, slot: int, well_offset_x: float = 0.0, work: bool = False, steps: int = 120) -> None:
+    |                                                                   ^^^^
+121 |         """Move pipette over a slot, optionally descending to working depth."""
+122 |         sx, sy = SLOT_XY.get(slot, (0.0, 0.0))
+    |
+help: Consider adding `@typing.override` if changing the function signature would violate the Liskov Substitution Principle
+
+E501 Line too long (112 > 88)
+   --> opentrons/visualization/scene.py:120:89
+    |
+118 |             mujoco.mj_step(self.model, self.data)
+119 |
+120 |     def move_to_slot(self, slot: int, well_offset_x: float = 0.0, work: bool = False, steps: int = 120) -> None:
+    |                                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^
+121 |         """Move pipette over a slot, optionally descending to working depth."""
+122 |         sx, sy = SLOT_XY.get(slot, (0.0, 0.0))
+    |
+
+C901 `_sync_visuals` is too complex (13 > 10)
+   --> opentrons/visualization/scene.py:132:9
+    |
+131 |     # ── Visual sync ───────────────────────────────────────────────────────────
+132 |     def _sync_visuals(self) -> None:
+    |         ^^^^^^^^^^^^^
+133 |         s = self.state
+    |
+
+PLR0912 Too many branches (19 > 12)
+   --> opentrons/visualization/scene.py:132:9
+    |
+131 |     # ── Visual sync ───────────────────────────────────────────────────────────
+132 |     def _sync_visuals(self) -> None:
+    |         ^^^^^^^^^^^^^
+133 |         s = self.state
+    |
+
+B007 Loop control variable `row_idx` not used within loop body
+   --> opentrons/visualization/scene.py:146:13
+    |
+144 |         # Plate well colours (slot 2)
+145 |         slot2 = s.well_volumes.get(2, {})
+146 |         for row_idx, row in enumerate("ABCDEFGH"):
+    |             ^^^^^^^
+147 |             key = f"w_{row}1"
+148 |             if key in self._g_wells:
+    |
+help: Rename unused `row_idx` to `_row_idx`
+    |
+145 |         slot2 = s.well_volumes.get(2, {})
+    -         for row_idx, row in enumerate("ABCDEFGH"):
+146 +         for _row_idx, row in enumerate("ABCDEFGH"):
+147 |             key = f"w_{row}1"
+    |
+note: This is an unsafe fix and may change runtime behavior
+
+PLR2004 Magic value used in comparison, consider replacing `30` with a constant variable
+   --> opentrons/visualization/scene.py:169:19
+    |
+167 |         if not s.temperature.active:
+168 |             self.model.geom_rgba[self._g_temp_led][:] = [.35, .35, .45, 1.0]
+169 |         elif tc < 30:
+    |                   ^^
+170 |             self.model.geom_rgba[self._g_temp_led][:] = [.20, .40, .90, 1.0]
+171 |         elif tc < 60:
+    |
+
+PLR2004 Magic value used in comparison, consider replacing `60` with a constant variable
+   --> opentrons/visualization/scene.py:171:19
+    |
+169 |         elif tc < 30:
+170 |             self.model.geom_rgba[self._g_temp_led][:] = [.20, .40, .90, 1.0]
+171 |         elif tc < 60:
+    |                   ^^
+172 |             t = (tc - 30) / 30.0
+173 |             self.model.geom_rgba[self._g_temp_led][:] = [.20 + .75 * t, .40 - .15 * t, .90 - .80 * t, 1.0]
+    |
+
+E501 Line too long (106 > 88)
+   --> opentrons/visualization/scene.py:173:89
+    |
+171 |         elif tc < 60:
+172 |             t = (tc - 30) / 30.0
+173 |             self.model.geom_rgba[self._g_temp_led][:] = [.20 + .75 * t, .40 - .15 * t, .90 - .80 * t, 1.0]
+    |                                                                                         ^^^^^^^^^^^^^^^^^^
+174 |         else:
+175 |             self.model.geom_rgba[self._g_temp_led][:] = [.95, .25, .10, 1.0]
+    |
+
+D212 [*] Multi-line docstring summary should start at the first line
+   --> opentrons/visualization/scene.py:205:9
+    |
+203 |       # ── Event application ─────────────────────────────────────────────────────
+204 |       def apply_event(self, event: dict, motion_steps: int = 100) -> list[np.ndarray]:
+205 | /         """
+206 | |         Apply one run-log event, animate the gantry, and return rendered frames.
+207 | |
+208 | |         Parameters
+209 | |         ----------
+210 | |         event:
+211 | |             Parsed run-log event dict. Keys depend on event type:
+212 | |             - aspirate/dispense: type, volume, slot, well
+213 | |             - pick/drop: type, slot (optional)
+214 | |             - delay: type, minutes, seconds
+215 | |             - engage/disengage: type, height (engage only)
+216 | |             - temp_set: type, celsius
+217 | |             - tc_open_lid / tc_close_lid / tc_block_temp / tc_execute_profile
+218 | |             - hs_shake / hs_open_latch / hs_close_latch
+219 | |         motion_steps:
+220 | |             Physics steps per gantry move segment.
+221 | |
+222 | |         Returns
+223 | |         -------
+224 | |         list of RGB frames (H×W×3 uint8)
+225 | |         """
+    | |___________^
+226 |           frames: list[np.ndarray] = []
+227 |           etype = event.get("type", "")
+    |
+help: Remove whitespace after opening quotes
+    |
+204 |     def apply_event(self, event: dict, motion_steps: int = 100) -> list[np.ndarray]:
+    -         """
+    -         Apply one run-log event, animate the gantry, and return rendered frames.
+205 +         """Apply one run-log event, animate the gantry, and return rendered frames.
+206 |
+    |
+
+D413 [*] Missing blank line after last section ("Returns")
+   --> opentrons/visualization/scene.py:222:9
+    |
+220 |             Physics steps per gantry move segment.
+221 |
+222 |         Returns
+    |         ^^^^^^^
+223 |         -------
+224 |         list of RGB frames (H×W×3 uint8)
+    |
+help: Add blank line after "Returns"
+    |
+224 |         list of RGB frames (H×W×3 uint8)
+225 +
+226 |         """
+    |
+
+RUF002 Docstring contains ambiguous `×` (MULTIPLICATION SIGN). Did you mean `x` (LATIN SMALL LETTER X)?
+   --> opentrons/visualization/scene.py:224:30
+    |
+222 |         Returns
+223 |         -------
+224 |         list of RGB frames (H×W×3 uint8)
+    |                              ^
+225 |         """
+226 |         frames: list[np.ndarray] = []
+    |
+
+RUF002 Docstring contains ambiguous `×` (MULTIPLICATION SIGN). Did you mean `x` (LATIN SMALL LETTER X)?
+   --> opentrons/visualization/scene.py:224:32
+    |
+222 |         Returns
+223 |         -------
+224 |         list of RGB frames (H×W×3 uint8)
+    |                                ^
+225 |         """
+226 |         frames: list[np.ndarray] = []
+    |
+
+RUF002 Docstring contains ambiguous `×` (MULTIPLICATION SIGN). Did you mean `x` (LATIN SMALL LETTER X)?
+   --> opentrons/visualization/scene.py:261:43
+    |
+259 |     # ── Rendering ─────────────────────────────────────────────────────────────
+260 |     def render(self, camera: str = "iso") -> np.ndarray:
+261 |         """Render current scene, returns H×W×3 uint8."""
+    |                                           ^
+262 |         cam_id = mujoco.mj_name2id(self.model, mujoco.mjtObj.mjOBJ_CAMERA, camera)
+263 |         if cam_id >= 0:
+    |
+
+RUF002 Docstring contains ambiguous `×` (MULTIPLICATION SIGN). Did you mean `x` (LATIN SMALL LETTER X)?
+   --> opentrons/visualization/scene.py:261:45
+    |
+259 |     # ── Rendering ─────────────────────────────────────────────────────────────
+260 |     def render(self, camera: str = "iso") -> np.ndarray:
+261 |         """Render current scene, returns H×W×3 uint8."""
+    |                                             ^
+262 |         cam_id = mujoco.mj_name2id(self.model, mujoco.mjtObj.mjOBJ_CAMERA, camera)
+263 |         if cam_id >= 0:
+    |
+
+PLC0415 `import` should be at the top-level of a file
+   --> opentrons/visualization/scene.py:279:13
+    |
+277 |         pixels = self.render(camera)
+278 |         try:
+279 |             import matplotlib
+    |             ^^^^^^^^^^^^^^^^^
+280 |             matplotlib.use("Agg")
+281 |             import matplotlib.pyplot as plt
+    |
+
+ICN001 `matplotlib` should be imported as `mpl`
+   --> opentrons/visualization/scene.py:279:20
+    |
+277 |         pixels = self.render(camera)
+278 |         try:
+279 |             import matplotlib
+    |                    ^^^^^^^^^^
+280 |             matplotlib.use("Agg")
+281 |             import matplotlib.pyplot as plt
+    |
+help: Alias `matplotlib` to `mpl`
+    |
+278 |         try:
+    -             import matplotlib
+    -             matplotlib.use("Agg")
+279 +             import matplotlib as mpl
+280 +             mpl.use("Agg")
+281 |             import matplotlib.pyplot as plt
+    |
+note: This is an unsafe fix and may change runtime behavior
+
+PLC0415 `import` should be at the top-level of a file
+   --> opentrons/visualization/scene.py:281:13
+    |
+279 |             import matplotlib
+280 |             matplotlib.use("Agg")
+281 |             import matplotlib.pyplot as plt
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+282 |
+283 |             fig, ax = plt.subplots(
+    |
+
+E501 Line too long (93 > 88)
+   --> opentrons/visualization/scene.py:284:89
+    |
+283 |             fig, ax = plt.subplots(
+284 |                 figsize=(self.RENDER_W / 100, self.RENDER_H / 100), dpi=100, facecolor="none"
+    |                                                                                         ^^^^^
+285 |             )
+286 |             ax.axis("off")
+    |
+
+COM812 [*] Trailing comma missing
+   --> opentrons/visualization/scene.py:284:94
+    |
+283 |             fig, ax = plt.subplots(
+284 |                 figsize=(self.RENDER_W / 100, self.RENDER_H / 100), dpi=100, facecolor="none"
+    |                                                                                              ^
+285 |             )
+286 |             ax.axis("off")
+    |
+help: Add trailing comma
+    |
+283 |             fig, ax = plt.subplots(
+    -                 figsize=(self.RENDER_W / 100, self.RENDER_H / 100), dpi=100, facecolor="none"
+284 +                 figsize=(self.RENDER_W / 100, self.RENDER_H / 100), dpi=100, facecolor="none",
+285 |             )
+    |
+
+E501 Line too long (97 > 88)
+   --> opentrons/visualization/scene.py:293:89
+    |
+291 |             ax.text(
+292 |                 12, 22,
+293 |                 f"step {s.step_count}  tip={'ON' if s.has_tip else 'OFF'}  {s.pipette_vol:.0f}µL"
+    |                                                                                         ^^^^^^^^^
+294 |                 f"  t={s.elapsed_seconds:.0f}s",
+295 |                 color="#00d4ff", fontsize=8, fontfamily="monospace",
+    |
+
+F541 [*] f-string without any placeholders
+   --> opentrons/visualization/scene.py:307:37
+    |
+305 |                 module_lines.append("TC lid OPEN")
+306 |             elif s.thermocycler.profile_running:
+307 |                 module_lines.append(f"TC running")
+    |                                     ^^^^^^^^^^^^^
+308 |             if s.heater_shaker.active:
+309 |                 module_lines.append(f"HS {s.heater_shaker.rpm:.0f}rpm")
+    |
+help: Remove extraneous `f` prefix
+    |
+306 |             elif s.thermocycler.profile_running:
+    -                 module_lines.append(f"TC running")
+307 +                 module_lines.append("TC running")
+308 |             if s.heater_shaker.active:
+    |
+
+E501 Line too long (101 > 88)
+   --> opentrons/visualization/scene.py:327:89
+    |
+325 |             fig.canvas.draw()
+326 |             w, h = fig.canvas.get_width_height()
+327 |             frame = np.frombuffer(fig.canvas.buffer_rgba(), dtype=np.uint8).reshape(h, w, 4)[..., :3]
+    |                                                                                         ^^^^^^^^^^^^^
+328 |             plt.close(fig)
+329 |             return frame
+    |
+
+TRY300 Consider moving this statement to an `else` block
+   --> opentrons/visualization/scene.py:329:13
+    |
+327 |             frame = np.frombuffer(fig.canvas.buffer_rgba(), dtype=np.uint8).reshape(h, w, 4)[..., :3]
+328 |             plt.close(fig)
+329 |             return frame
+    |             ^^^^^^^^^^^^
+330 |         except Exception:
+331 |             return pixels
+    |
+
+BLE001 Do not catch blind exception: `Exception`
+   --> opentrons/visualization/scene.py:330:16
+    |
+328 |             plt.close(fig)
+329 |             return frame
+330 |         except Exception:
+    |                ^^^^^^^^^
+331 |             return pixels
+    |
+
+D102 Missing docstring in public method
+   --> opentrons/visualization/scene.py:345:9
+    |
+343 |         self._sync_visuals()
+344 |
+345 |     def close(self) -> None:
+    |         ^^^^^
+346 |         self._renderer.close()
+    |
+
+PYI034 `__enter__` methods in classes like `WetLabScene` usually return `self` at runtime
+   --> opentrons/visualization/scene.py:348:9
+    |
+346 |         self._renderer.close()
+347 |
+348 |     def __enter__(self) -> "WetLabScene":
+    |         ^^^^^^^^^
+349 |         return self
+    |
+help: Use `Self` as return type
+    |
+15  | from .modules import ProtocolState
+16  + from typing_extensions import Self
+17  |
+--------------------------------------------------------------------------------
+348 |
+    -     def __enter__(self) -> "WetLabScene":
+349 +     def __enter__(self) -> Self:
+350 |         return self
+    |
+note: This is an unsafe fix and may change runtime behavior
+
+D105 Missing docstring in magic method
+   --> opentrons/visualization/scene.py:348:9
+    |
+346 |         self._renderer.close()
+347 |
+348 |     def __enter__(self) -> "WetLabScene":
+    |         ^^^^^^^^^
+349 |         return self
+    |
+
+UP037 [*] Remove quotes from type annotation
+   --> opentrons/visualization/scene.py:348:28
+    |
+346 |         self._renderer.close()
+347 |
+348 |     def __enter__(self) -> "WetLabScene":
+    |                            ^^^^^^^^^^^^^
+349 |         return self
+    |
+help: Remove quotes
+    |
+347 |
+    -     def __enter__(self) -> "WetLabScene":
+348 +     def __enter__(self) -> WetLabScene:
+349 |         return self
+    |
+
+D105 Missing docstring in magic method
+   --> opentrons/visualization/scene.py:351:9
+    |
+349 |         return self
+350 |
+351 |     def __exit__(self, *_) -> None:
+    |         ^^^^^^^^
+352 |         self.close()
+    |
+
+ANN002 Missing type annotation for `*_`
+   --> opentrons/visualization/scene.py:351:24
+    |
+349 |         return self
+350 |
+351 |     def __exit__(self, *_) -> None:
+    |                        ^^
+352 |         self.close()
+    |
+
+Found 158 errors.
+[*] 31 fixable with `--fix` (18 unsafe fixes available with `--fix --unsafe-fixes`).

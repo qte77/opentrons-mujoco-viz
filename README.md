@@ -6,7 +6,7 @@ PR'd. All of it was produced on upstream `main` @ `460169f` (mujoco 3.15.0, `MUJ
 | File | Shows | Used in |
 |---|---|---|
 | `01_parser_all_frames_strip.png` | Every frame of a render from `scripts/sim.txt`; no liquid moves | #2 |
-| `03_gantry_slot{1,3,9}_top.png` | Tip after `move_to_slot(slot, work=True)`; stops near the deck centre | gantry issue |
+| `03_gantry_slot{1,3,9}_top.png` | Tip after `move_to_slot(slot, work=True, steps=400)`; stops near the deck centre. Measured `pipette_tip` site: slot 1 target (−0.152, −0.170) → (−0.034, +0.015, **−0.164**); slot 3 (+0.152, −0.170) → (+0.006, −0.065, **−0.161**); slot 9 (+0.152, 0) → (+0.044, −0.039, **−0.161**). Deck top is z = 0, so the tip ends below it. | gantry issue |
 | `04_camera_{iso,side,front,deck,top}.png` | Default renders; only `top` is not black | cameras |
 | `05_run_top.mp4`, `05_video_frame01_black.png`, `05_video_frame00_top.png` | `render_protocol(camera="top", hud=True)` mixes black `iso` frames into the video | camera/HUD |
 | `06_hud_frame_top.png` | HUD frame (matplotlib installed) | camera/HUD |
